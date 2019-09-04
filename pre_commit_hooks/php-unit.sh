@@ -40,7 +40,7 @@ else
     fi
 fi
 
-echo "Running command $phpunit_command"
+echo "🙏 Running command $phpunit_command"
 command_result=`eval $phpunit_command`
 if [[ $command_result =~ FAILURES ]]
 then

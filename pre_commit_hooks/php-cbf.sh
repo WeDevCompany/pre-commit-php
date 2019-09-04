@@ -50,7 +50,7 @@ echo "Running command $phpcbf_command"
 command_result=`eval $phpcbf_command`
 if [[ $command_result =~ ERROR ]]
 then
-    echo -en "${msg_color_magenta}Errors detected by PHP Code Beautifier and Fixer ... ${msg_color_none} \n"
+    echo -en "${msg_color_magenta}🐱‍👤Errors detected by PHP Code Beautifier and Fixer ... ${msg_color_none} \n"
     echo "$command_result"
     exit 1
 fi

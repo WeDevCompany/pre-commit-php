@@ -35,7 +35,7 @@ else
         if [ -f "$phpcs_local_exec" ]; then
             phpcs_command=$phpcs_command
         else
-            echo "No valid PHP Codesniffer executable found! Please have one available as either $phpcs_vendor_command, $phpcs_global_command or $phpcs_local_exec"
+            echo "No valid PHP Codesniffer executable found!🕵️‍ Please have one available as either $phpcs_vendor_command, $phpcs_global_command or $phpcs_local_exec"
             exit 1
         fi
     fi
@@ -49,7 +49,7 @@ echo "Running command $phpcs_command"
 command_result=`eval $phpcs_command`
 if [[ $command_result =~ ERROR ]]
 then
-    echo -en "${msg_color_magenta}Errors detected by PHP CodeSniffer ... ${msg_color_none} \n"
+    echo -en "${msg_color_magenta}Errors detected by PHP CodeSniffer 🕵️‍ ... ${msg_color_none} \n"
     echo "$command_result"
     exit 1
 fi

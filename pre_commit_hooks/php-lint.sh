@@ -51,7 +51,7 @@ while getopts ":s:" optname
   done
 
 # Loop through the list of paths to run php lint against
-echo -en "${msg_color_yellow}Begin PHP Linter ...${msg_color_none} \n"
+echo -en "${msg_color_yellow}🔦Begin PHP Linter ...${msg_color_none} \n"
 
 parse_error_count=0
 for path in ${*:$arg_lookup_start}
