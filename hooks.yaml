@@ -46,4 +46,4 @@
   description: Run code to fix js files
   entry: pre_commit_hooks/eslint-fix.sh
   language: script
-  files: \.jsx\?$
+  files: \.jsx?$
