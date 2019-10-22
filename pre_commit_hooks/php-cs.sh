@@ -26,17 +26,22 @@ phpcs_command="php $phpcs_local_exec"
 # Check vendor/bin/phpunit
 phpcs_vendor_command="vendor/bin/phpcs"
 phpcs_global_command="phpcs"
-if [ -f "$phpcs_vendor_command" ]; then
-	phpcs_command=$phpcs_vendor_command
+phpcbf_docker_vendor_command="web/app/vendor/bin/phpcbf"
+if [ -f "$phpcbf_docker_vendor_command" ]; then
+    phpcs_command=$phpcbf_docker_vendor_command
 else
-    if hash phpcs 2>/dev/null; then
-        phpcs_command=$phpcs_global_command
+    if [ -f "$phpcs_vendor_command" ]; then
+        phpcs_command=$phpcs_vendor_command
     else
-        if [ -f "$phpcs_local_exec" ]; then
-            phpcs_command=$phpcs_command
+        if hash phpcs 2>/dev/null; then
+            phpcs_command=$phpcs_global_command
         else
-            echo "No valid PHP Codesniffer executable found!🕵️‍ Please have one available as either $phpcs_vendor_command, $phpcs_global_command or $phpcs_local_exec"
-            exit 1
+            if [ -f "$phpcs_local_exec" ]; then
+                phpcs_command=$phpcs_command
+            else
+                echo "No valid PHP Codesniffer executable found!🕵️‍ Please have one available as either $phpcs_vendor_command, $phpcs_global_command or $phpcs_local_exec"
+                exit 1
+            fi
         fi
     fi
 fi

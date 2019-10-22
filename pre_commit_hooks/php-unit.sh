@@ -23,22 +23,28 @@ phpunit_local_exec="phpunit.phar"
 phpunit_command="php $phpunit_local_exec"
 
 # Check vendor/bin/phpunit
+phpunit_docker_command="web/app/vendor/bin/phpunit"
 phpunit_vendor_command="vendor/bin/phpunit"
 phpunit_global_command="phpunit"
 if [ -f "$phpunit_vendor_command" ]; then
 	phpunit_command=$phpunit_vendor_command
 else
-    if hash phpunit 2>/dev/null; then
-        phpunit_command=$phpunit_global_command
+   if [ -f "$phpunit_vendor_command" ]; then
+        phpunit_command=$phpunit_vendor_command
     else
-        if [ -f "$phpunit_local_exec" ]; then
-            phpunit_command=$phpunit_command
+        if hash phpunit 2>/dev/null; then
+            phpunit_command=$phpunit_global_command
         else
-            echo "No valid PHP Unit executable found! Please have one available as either $phpunit_vendor_command, $phpunit_global_command or $phpunit_local_exec"
-            exit 1
+            if [ -f "$phpunit_local_exec" ]; then
+                phpunit_command=$phpunit_command
+            else
+                echo "No valid PHP Unit executable found! Please have one available as either $phpunit_vendor_command, $phpunit_global_command or $phpunit_local_exec"
+                exit 1
+            fi
         fi
     fi
 fi
+
 
 echo "🙏 Running command $phpunit_command"
 command_result=`eval $phpunit_command`
