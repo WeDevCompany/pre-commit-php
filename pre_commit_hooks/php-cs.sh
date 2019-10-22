@@ -26,7 +26,7 @@ phpcs_command="php $phpcs_local_exec"
 # Check vendor/bin/phpunit
 phpcs_vendor_command="vendor/bin/phpcs"
 phpcs_global_command="phpcs"
-phpcbf_docker_vendor_command="web/app/vendor/bin/phpcbf"
+phpcs_docker_vendor_command="web/app/vendor/bin/phpcs"
 if [ -f "$phpcbf_docker_vendor_command" ]; then
     phpcs_command=$phpcbf_docker_vendor_command
 else
