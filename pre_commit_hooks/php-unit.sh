@@ -26,8 +26,8 @@ phpunit_command="php $phpunit_local_exec"
 phpunit_docker_command="web/app/vendor/bin/phpunit"
 phpunit_vendor_command="vendor/bin/phpunit"
 phpunit_global_command="phpunit"
-if [ -f "$phpunit_vendor_command" ]; then
-	phpunit_command=$phpunit_vendor_command
+if [ -f "$phpunit_docker_command" ]; then
+	phpunit_command=$phpunit_docker_command
 else
    if [ -f "$phpunit_vendor_command" ]; then
         phpunit_command=$phpunit_vendor_command
