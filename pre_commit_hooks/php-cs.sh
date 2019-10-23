@@ -27,8 +27,8 @@ phpcs_command="php $phpcs_local_exec"
 phpcs_vendor_command="vendor/bin/phpcs"
 phpcs_global_command="phpcs"
 phpcs_docker_vendor_command="web/app/vendor/bin/phpcs"
-if [ -f "$phpcbf_docker_vendor_command" ]; then
-    phpcs_command=$phpcbf_docker_vendor_command
+if [ -f "$phpcs_docker_vendor_command" ]; then
+    phpcs_command=$phpcs_docker_vendor_command
 else
     if [ -f "$phpcs_vendor_command" ]; then
         phpcs_command=$phpcs_vendor_command
