@@ -10,7 +10,9 @@ exec_command=""
 # A phar file will need to be called by php
 prefixed_local_command="php $local_command"
 
-if [ -f "$vendor_command" ]; then
+if [ -f "$docker_command" ]; then
+    exec_command=$docker_command
+elif [ -f "$vendor_command" ]; then
     exec_command=$vendor_command
 elif hash $global_command 2>/dev/null; then
     exec_command=$global_command
@@ -22,5 +24,6 @@ else
     echo " * $local_command"
     echo " * $vendor_command"
     echo " * $global_command"
+    echo " * $docker_command"
     exit 1
 fi
